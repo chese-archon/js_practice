@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        #square {
+            width: 100px;
+            height: 100px;
+            background-color: #2E9AFF;
+            border: 5px solid #000000;
+            margin: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+
+        .square1 {
+            width: 100px;
+            height: 100px;
+            background-color: #48ca73;
+            border: 5px solid #f1e978;
+            margin: 20px;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .active {
+            background-color: #f1e978;
+        }
+
+        .square2 {
+            width: 100px;
+            height: 100px;
+            background-color: #48ca73;
+            border: 5px solid #f1e978;
+            margin: 20px;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .calc {
+            background-color: #71bafd;
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .num button, .calc_func button {
+            margin: 5px;
+        }
+        .calc_window input {
+            width: 60%;
+            height: 20px;
+            border: 1px solid #e3e3e3;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+        /*.calc_msg {min-height: 20px;}
+        .calc_msg:empty::before {
+            content: "\200B"
+        }*/
+    </style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.6.4/math.js"></script>
+<body>
+
+<h2>JavaScript HTML DOM</h2>
+<p>Changing the HTML by vanilla js:</p>
+
+
+<!--<p id="p1">Hello World!</p>-->
+<p id="p2">Hello World!</p>
+
+<p>Fill input field</p>
+<input type="text" id="inp">
+<button id="fill_btn">Fill field</button>
+
+<p>Input field & alert button</p>
+<input type="text" id="inp3">
+<button id="alert_btn" class="alert_btn">Send data</button>
+
+<p>Change input values</p>
+<input type="text" id="inp_change1">
+<input type="text" id="inp_change2">
+<button id="change" class="change">Change values</button>
+
+<p>Lock / unlock</p>
+<input type="text" id="inp5">
+<button id="lock" onclick="lock()">Lock</button>
+<button id="unlock" onclick="unlock()">Unlock</button>
+
+<p>Show / close modal window</p>
+<button id="sow_w">Show window</button>
+<button id="close_w">Close window</button>
+
+<p>Square</p>
+<button id="square_btn" onclick="square()">Hide square</button>
+<div id="square"></div>
+
+<p>4 color squares</p>
+<div class="square1"></div>
+<div class="square1"></div>
+<div class="square1"></div>
+<div class="square1"></div>
+
+<!--<p>4 color squares 2</p>
+<div class="square2"></div>
+<div class="square2"></div>
+<div class="square2"></div>
+<div class="square2"></div>-->
+
+<p>Simple calculator</p>
+<div class="calc">
+    <div class="num">
+        <button class="btn_num" value="0">0</button>
+        <button class="btn_num" value="1">1</button>
+        <button class="btn_num" value="2">2</button>
+        <button class="btn_num" value="3">3</button>        
+        <button class="btn_num" value="4">4</button>
+        <button class="btn_num" value="5">5</button>
+        <button class="btn_num" value="6">6</button>
+        <button class="btn_num" value="7">7</button>
+        <button class="btn_num" value="8">8</button>
+        <button class="btn_num" value="9">9</button>
+    </div>
+    <div class="calc_func">
+        <button class="btn_func" value="+">+</button>
+        <button class="btn_func" value="-">-</button>
+        <button class="btn_func" value=":">:</button>
+        <button class="btn_func" value="*">*</button>
+        <button class="btn_func" value="(">(</button>
+        <button class="btn_func" value=")">)</button>
+        <button class="btn_func" value="Clear">Clear</button>
+        
+    </div>
+    <div class="calc_window">
+        <p id="calc_msg"><br></p>
+        <input id="math"><button class="btn_get_res" value="get_res" onclick="calc()">=</button>
+    </div>
+</div>
+
+
+<script src="test_js.js"></script>
+
+</body>
+</html>
