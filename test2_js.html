@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <title>TODO-list</title>
+
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        /* Style the list items */
+        ul li {
+            cursor: pointer;
+            position: relative;
+            padding: 12px 8px 12px 40px;
+            list-style-type: none;
+            background: #eee;
+            font-size: 18px;
+            transition: 0.2s;
+            justify-content: space-between;
+            display: flex;
+
+            /* make the list items unselectable */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        /* Set all odd list items to a different color (zebra-stripes) */
+        ul li:nth-child(odd) {
+            background: #f9f9f9;
+        }
+
+/* Darker background-color on hover */
+ul li:hover {
+  background: #ddd;
+}
+
+/* When clicked on, add a background color and strike out text */
+ul li.checked {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through;
+}
+
+        ul li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #f5e346;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+li button.del_btn {
+    background-color: #208812;
+    display: inline-block;
+    margin-right: 900px;
+    text-decoration: none !important;
+}
+
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: Verdana, sans-serif;
+}
+
+.image-sliderfade {
+    display: none;
+}
+
+img {
+    vertical-align: middle;
+}
+
+/* Slideshow container */
+.container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
+
+/* Caption text */
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 20px 15px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 40%;
+    background: rgba(0, 0, 0, 0.7);
+    text-align: left;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: transparent;
+    border-color: #ddd;
+    border-width: 5 px;
+    border-style: solid;
+    border-radius: 50%;
+    display: inline-block;
+    transition: border-color 0.6s ease;
+}
+
+.active {
+    border-color: #666;
+}
+
+/* Animation */
+.fade {
+    -webkit-animation-name: fade-image;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade-image;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade-image {
+    from {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-image {
+    from {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+    .text {
+        font-size: 11px;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <h2>TODO-list</h2>
+    <input id="new_note" type="text">
+    <button id="new_note_btn">Add note</button>
+    <br>
+
+
+    <!-- need: show note from array -->
+    <ul id="list">
+        <li>A note</li>
+        <li class="checked">B note</li>
+        <li>C note</li>
+    </ul>
+
+    <!--<script src="test2_js.js"></script>-->
+
+    <div id="slider"></div>
+    
+    <!-- Slideshow Container Div -->
+    <div class="container">
+        <!-- Full-width images with caption text -->
+        <div class="image-sliderfade fade">
+            <img src="https://www.w3schools.com/howto/img_lights_wide.jpg" 
+                 style="width: 100%" />
+            <div class="text">Image caption 1</div>
+        </div>
+
+        <div class="image-sliderfade fade">
+            <img src="https://www.w3schools.com/howto/img_nature_wide.jpg" 
+                 style="width: 100%" />
+            <div class="text">Image caption 2</div>
+        </div>
+
+        <div class="image-sliderfade fade">
+            <img src="https://www.w3schools.com/howto/img_snow_wide.jpg" 
+                 style="width: 100%" />
+            <div class="text">Image caption 3</div>
+        </div>
+
+        <div class="image-sliderfade fade">
+            <img src="https://www.w3schools.com/howto/img_mountains_wide.jpg" 
+                 style="width: 100%" />
+            <div class="text">Image caption 4</div>
+        </div>
+    </div>
+    <br />
+
+    <!-- The dots/circles -->
+    <div style="text-align: center">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+    <!--<p class="test_text">Res:</p>
+
+<script>
+const slides = [
+    {
+        img: 'https://www.w3schools.com/howto/img_nature_wide.jpg',
+        text: 'Caption Text 1'
+    },
+    {
+        img: 'https://www.w3schools.com/howto/img_snow_wide.jpg',
+        text: 'Caption Text 2'
+    },
+    {
+        img: 'https://www.w3schools.com/howto/img_mountains_wide.jpg',
+        text: 'Caption Text 3'
+    },
+];
+
+new Slider(
+    slides, // слайды
+    'slider', // id для вставки в html
+    {
+        loop: true, 
+        navs: true,
+        pags: true,
+        auto: true,
+        delay: 3,
+    }
+);
+
+</script>-->
+<script src="test2_js.js"></script>
+</body>
+
+</html>
